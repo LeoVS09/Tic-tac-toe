@@ -1,2 +1,3 @@
 # Tic-tac-toe
-simple tic tac toe game on react
+Simple tic tac toe game on react and flex
+[play online](https://leovs09.github.io/Tic-tac-toe/)
