@@ -4,6 +4,7 @@
     height: 9.5em;
     text-align: center;
     background-color: #14bdac;
+
 }
 
 .square:focus {
@@ -19,4 +20,8 @@
     font-size: 7.5em;
     color: #333333;
     font-family: "Roboto","Century Gothic", Futura, sans-serif;
+}
+
+.win_square{
+    color: #FFF176;
 }

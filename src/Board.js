@@ -13,29 +13,35 @@ class Board extends Component {
         };
     }
 
+    renderRow(indexes){
+        return (
+            <div className="board-row" key={indexes[0]}>{
+                indexes.map((item) => {
+                    return this.renderSquare(item);
+                })
+            }</div>
+        );
+    }
     renderSquare(i) {
-        return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)}/>;
+        let winner = false;
+        if(this.props.winner){
+            for(let k = 0; k < this.props.winner.length; k++)
+                if(this.props.winner[k] == i) {
+                    winner = true;
+                    break;
+                }
+        }
+        return <Square key={i} value={this.props.squares[i]} winner={winner} onClick={() => this.props.onClick(i)}/>;
     }
     render() {
-
+        let rows = [
+            [0,1,2],
+            [3,4,5],
+            [6,7,8]
+        ];
         return (
             <div className="board">
-
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+                {rows.map((indexes) => this.renderRow(indexes))}
             </div>
         );
     }

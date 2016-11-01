@@ -6,13 +6,15 @@ class Square extends Component{
     constructor(){
         super();
         this.state = {
-            particles: Array(9).fill(null)
+            particles: Array(9).fill(null),
+
         }
     }
     render(){
+        let value_class = "square_value" + (this.props.winner ? " win_square" : "");
         return (
             <div className="square" onClick={() => this.props.onClick()}>
-                <p className="square_value">{this.props.value}</p>
+                <p className={value_class}>{this.props.value}</p>
             </div>
         );
     }

@@ -40,7 +40,7 @@ class Game extends Component {
 
         let status;
         if(winner)
-            status = 'Winner: ' + winner;
+            status = 'Winner: ' + winner.symbol;
         else
             status = `next player: ${this.state.xIsNext ? "X" : "O"}`;
         const moves = history.map((step,move) =>{
@@ -61,6 +61,7 @@ class Game extends Component {
                 <div className="game-board">
                     <Board
                         squares={current.squares}
+                        winner={winner ? winner.line : null}
                         onClick={(i)=> this.handleClick(i)}
                     />
                 </div>
@@ -86,12 +87,15 @@ function calculateWinner(squares) {
         [1, 4, 7],
         [2, 5, 8],
         [0, 4, 8],
-        [2, 4, 6],
+        [2, 4, 6]
     ];
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+            return {
+                symbol: squares[a],
+                line: [a,b,c]
+            }
         }
     }
     return null;
