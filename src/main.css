@@ -1,0 +1,11 @@
+html,body,#mount-point{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+}
+body {
+  font: 14px "Roboto","Century Gothic", Futura, sans-serif;
+  background-color: #f8f8f8;
+}
+
