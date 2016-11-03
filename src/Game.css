@@ -4,20 +4,26 @@
     width: 100%;
 
 }
-.game-header{
+.game_header{
     flex: 1;
     margin: auto;
     color: #999999;
     font-family: "Roboto","Century Gothic", Futura, sans-serif;
+
 }
-.game-board{
+.game_status{
+    font-size: 2em;
+    margin: 0 auto 0.5em;
+    text-align: center;
+}
+.game_board{
     display: flex;
     background-color: #14bdac;
     box-shadow: 0px 0px 15px -1px rgba(0,0,0,0.63);
     height: 35em;
     align-content: center;
 }
-.game-info {
+.game_info {
     flex:2;
     margin: 1em auto;
     flex-basis: auto;

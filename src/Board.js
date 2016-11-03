@@ -5,13 +5,6 @@ import './Board.css';
 
 
 class Board extends Component {
-    constructor(){
-        super();
-        this.state = {
-            squares:Array(9).fill(null),
-            xIsNext: true
-        };
-    }
 
     renderRow(indexes){
         return (
@@ -31,7 +24,7 @@ class Board extends Component {
                     break;
                 }
         }
-        return <Square key={i} value={this.props.squares[i]} winner={winner} onClick={() => this.props.onClick(i)}/>;
+        return <Square key={i} particles={this.props.squares[i]} winner={winner} onClick={() => this.props.onClick(i)}/>;
     }
     render() {
         let rows = [
