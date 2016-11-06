@@ -111,6 +111,7 @@ function unleash(squares,numbers,define){
         for (let number of numbers)
             if (haveAnotherVariants(squares[number], define)) conflicts.push(number);
         if(conflicts.length == 0) break;
+
         for (let conflict of conflicts) {
             let notIn = notInDefine(squares[conflict], define);
             let second = searchSecond(squares, conflict, notIn);
@@ -147,8 +148,8 @@ function notInDefine(square,define) {
 function searchSecond(squares, number, first) {
     for(let i = 0; i < squares.length; i++)
         if(i != number)
-            for(let k = 0; k < squares[i].length && squares[i][k]; i++)
-                if(squares[i][k].symbol == first.symbol && squares[i][k].step) return i;
+            for(let k = 0; k < squares[i].length && squares[i][k]; k++)
+                if(squares[i][k].symbol == first.symbol && squares[i][k].step == first.step) return i;
         
 }
 function searchEquivalents(square){

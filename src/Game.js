@@ -118,7 +118,7 @@ class Game extends Component {
         return (
             <div className="game">
                 <header className="game_header">
-                    <h1>Tic-tac-toe game</h1>
+                    <h1>Quantum tic-tac-toe<sup><small>v0.3.1</small></sup></h1>
                     <h2 className="game_status">{status}</h2>
                 </header>
                 <div className="game_board">
@@ -129,13 +129,13 @@ class Game extends Component {
                         paradox={this.state.paradox}
                     />
                 </div>
-                {this.state.paradox ?
+                {this.state.paradox &&
                     <div className="game_choice">
                         <Choice paradox={this.state.paradox}
                                 onClick={(confrontation) => this.choice(confrontation)}
                         />
                     </div>
-                 : null}
+                 }
                 <div className="game_info">
                     <ol>{moves}</ol>
                 </div>

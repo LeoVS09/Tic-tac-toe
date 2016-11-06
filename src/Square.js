@@ -37,9 +37,11 @@ class Square extends Component{
 
         return(
             <table>
-                <Row key="0" arr={rows[0]} />
-                <Row key="1" arr={rows[1]} />
-                <Row key="2" arr={rows[2]} />
+                <tbody>
+                    <Row key="0" arr={rows[0]} />
+                    <Row key="1" arr={rows[1]} />
+                    <Row key="2" arr={rows[2]} />
+                </tbody>
             </table>
         )
     }
@@ -52,7 +54,7 @@ class Square extends Component{
         let value_class = "square_value" + (this.props.winner ? " win_square" : "");
         let square_class = "square" + (this.props.spotlight ? " square_spotlight" : "");
         return (
-            <div className={square_class} onClick={() => this.props.onClick()} onSelectStart={() => false} onMouseDown={() => false}>
+            <div className={square_class} onClick={() => this.props.onClick()} onMouseDown={() => false}>
                 {Array.isArray(this.props.value) ? this.table(this.props.value) : 
                     this.renderValue(this.props.value,this.props.winner)}
             </div>
