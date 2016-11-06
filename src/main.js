@@ -6,5 +6,5 @@ import Game from "./Game.js";
 
 ReactDOM.render(
     <Game />,
-    document.getElementById('mount-point')
+    document.getElementById('root')
 );

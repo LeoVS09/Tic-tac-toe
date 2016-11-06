@@ -1,4 +1,4 @@
-html,body,#mount-point{
+html,body,#root{
   margin: 0;
   padding: 0;
   display: flex;

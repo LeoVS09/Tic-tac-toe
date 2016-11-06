@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Board from './Board';
+import Choice from './Choice.js';
 import './Game.css';
-
+import {calculateWinner,searchParadox} from './mechanics';
 class Game extends Component {
     constructor(){
         super();
@@ -11,25 +12,41 @@ class Game extends Component {
                 squares: Array(9).fill(Array(9).fill(null))
             }],
             xIsNext: true,
-            startStep: false
+            startStep: false,
+            isChoicing: false,
+            paradox : null
         };
     }
     handleClick(i){
 
-        let history = this.state.history.slice(0,this.state.stepNumber)
-                          .map(item => ({
-                              squares: item.squares.map(arr => arr.slice())
-                          }));
+        let history = this.clone(this.state.history);
         let current = history[history.length - 1];
         let squares = current.squares.slice();
-        if(calculateWinner(squares) || !Array.isArray(squares[i])) return;
+        if(calculateWinner(squares) ||
+            !Array.isArray(squares[i]) ||
+            this.state.isChoicing) return;
+        
         let free = this.lastFree(squares[i]);
-
         if(free === -1) return;
         squares[i][free] = {
             symbol: this.state.xIsNext ? 'X': 'O',
             step: this.state.stepNumber
         };
+
+        let paradox = searchParadox(squares);
+        if(paradox !== null)
+            if(paradox.isOneSquare){
+                squares[paradox.number] = {
+                    symbol: paradox.equivalent.symbol,
+                    step: paradox.equivalent.step
+                };
+                paradox = null;
+            }else if(paradox.isDefinitely){
+                for(let i = 0; i < paradox.numbers.length; i++)
+                    squares[paradox.numbers[i]] = paradox.variant[i];
+                paradox = null;
+            }
+
         const startStep = !this.state.startStep;
         if(!startStep){
             history = history.concat([{
@@ -40,8 +57,32 @@ class Game extends Component {
             stepNumber: history.length,
             history: history,
             xIsNext: (startStep ? this.state.xIsNext : !this.state.xIsNext),
-            startStep: startStep
+            startStep: startStep,
+            isChoicing: paradox ? true : false,
+            paradox: paradox
         });
+    }
+    choice(confrontation){
+        let history = this.clone(this.state.history);
+        let current = history[history.length - 1];
+        let squares = current.squares.slice();
+        let k = 0;
+        for(let i of this.state.paradox.numbers)
+            squares[i] = confrontation[k++];
+        history[this.state.stepNumber - 1] = {squares:squares};
+        this.setState({
+            history: history,
+            isChoicing: false,
+            paradox: null
+        });
+    }
+    clone(history){
+        return history.slice(0,this.state.stepNumber)
+                .map(item => ({
+                    squares: item.squares.map(element => {
+                        if(Array.isArray(element)) return element.slice();
+                        return element})
+                }));
     }
     lastFree(square) {
         for (let i = 0; i < square.length; i++)
@@ -85,8 +126,16 @@ class Game extends Component {
                         squares={current.squares}
                         winner={winner ? winner.line : null}
                         onClick={(i)=> this.handleClick(i)}
+                        paradox={this.state.paradox}
                     />
                 </div>
+                {this.state.paradox ?
+                    <div className="game_choice">
+                        <Choice paradox={this.state.paradox}
+                                onClick={(confrontation) => this.choice(confrontation)}
+                        />
+                    </div>
+                 : null}
                 <div className="game_info">
                     <ol>{moves}</ol>
                 </div>
@@ -99,27 +148,5 @@ class Game extends Component {
 
 
 
-function calculateWinner(squares) {
-    const lines = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ];
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
-        if (!Array.isArray(squares[a]) && squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return {
-                symbol: squares[a],
-                line: [a,b,c]
-            }
-        }
-    }
-    return null;
-}
 
 export default Game;

@@ -24,7 +24,19 @@ class Board extends Component {
                     break;
                 }
         }
-        return <Square key={i} particles={this.props.squares[i]} winner={winner} onClick={() => this.props.onClick(i)}/>;
+        let spotlight=false;
+        if(this.props.paradox)
+            if(this.props.paradox.numbers[0] === i) spotlight=true;
+
+        return (
+            <Square
+                   key={i}
+                   value={this.props.squares[i]}
+                   winner={winner}
+                   onClick={() => this.props.onClick(i)}
+                   spotlight={spotlight}
+            />
+        );
     }
     render() {
         let rows = [

@@ -22,6 +22,13 @@
     box-shadow: 0px 0px 15px -1px rgba(0,0,0,0.63);
     height: 35em;
     align-content: center;
+    z-index: 1;
+}
+.game_choice{
+    flex: 2;
+    margin: 0 auto;
+    width: 32em;
+    z-index: 0;
 }
 .game_info {
     flex:2;
