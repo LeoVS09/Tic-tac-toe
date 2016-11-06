@@ -52,11 +52,13 @@ function searchParadox(squares) {
                             variant: result.variant
                         });
                     }
+                    let firstResult = unleash(squares,numbers,paradoxs.firstVariant);
+                    let secondResult = unleash(squares,numbers,paradoxs.secondVariant);
                     return ({
                         isOneSquare: false,
                         isDefinitely: false,
-                        numbers: numbers,
-                        confrontations: [paradoxs.firstVariant, paradoxs.secondVariant]
+                        numbers: firstResult.numbers,
+                        confrontations: [firstResult.variant, secondResult.variant]
                     });
                 }
             }
@@ -106,6 +108,12 @@ function paradoxes(first,second) {
 }
 
 function unleash(squares,numbers,define){
+    console.log("numbers: " + numbers);
+    numbers = numbers.slice();
+    define = define.map((item) => (item ?{
+        symbol: item.symbol,
+        step: item.step
+    } : null));
     let conflicts = [];
     while(true) {
         for (let number of numbers)
@@ -146,6 +154,7 @@ function notInDefine(square,define) {
     return null;
 }
 function searchSecond(squares, number, first) {
+    console.log("first: " + first);
     for(let i = 0; i < squares.length; i++)
         if(i != number)
             for(let k = 0; k < squares[i].length && squares[i][k]; k++)

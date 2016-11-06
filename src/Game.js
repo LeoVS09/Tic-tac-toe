@@ -104,7 +104,7 @@ class Game extends Component {
         if(winner)
             status = 'Winner: ' + winner.symbol;
         else
-            status = `next player: ${this.state.xIsNext ? "X" : "O"}`;
+            status = `NEXT: ${this.state.xIsNext ? "X" : "O"}`;
         const moves = history.map((step,move) =>{
             const desc = move ?
             "Move #" + move:
@@ -118,7 +118,7 @@ class Game extends Component {
         return (
             <div className="game">
                 <header className="game_header">
-                    <h1>Quantum tic-tac-toe<sup><small>v0.3.1</small></sup></h1>
+                    <h1>Quantum tic-tac-toe<sup><small>v0.3.9</small></sup></h1>
                     <h2 className="game_status">{status}</h2>
                 </header>
                 <div className="game_board">
