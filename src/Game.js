@@ -118,7 +118,7 @@ class Game extends Component {
         return (
             <div className="game">
                 <header className="game_header">
-                    <h1>Quantum tic-tac-toe<sup><small>v0.3.9</small></sup></h1>
+                    <h1><span className="quant">Quantum</span> tic-tac-toe<sup><small>v0.3.9</small></sup></h1>
                     <h2 className="game_status">{status}</h2>
                 </header>
                 <div className="game_board">

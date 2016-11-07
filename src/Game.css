@@ -11,6 +11,9 @@
     font-family: "Roboto","Century Gothic", Futura, sans-serif;
 
 }
+.game_header .quant{
+    font-family: 'Permanent Marker', cursive;
+}
 .game_header small{
     font-size: 0.6em;
     font-style: italic;
