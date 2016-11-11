@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Square from './Square'
-import './Board.css';
+import './styles/Board.css';
 
 
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Board from './Board';
 import Choice from './Choice.js';
-import './Game.css';
+import './styles/Game.css';
 import {calculateWinner,searchParadox} from './mechanics';
 class Game extends Component {
     constructor(){
@@ -118,7 +118,7 @@ class Game extends Component {
         return (
             <div className="game">
                 <header className="game_header">
-                    <h1><span className="quant">Quantum</span> tic-tac-toe<sup><small>v0.3.9</small></sup></h1>
+                    <h1><span className="quant">Quantum</span> tic-tac-toe<sup><small>v0.4.2</small></sup></h1>
                     <h2 className="game_status">{status}</h2>
                 </header>
                 <div className="game_board">

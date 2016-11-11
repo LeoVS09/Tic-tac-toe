@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Choice.css';
+import './styles/Choice.css';
 
 class Choice extends Component{
     render(){

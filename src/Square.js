@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Square.css';
+import './styles/Square.css';
 
 function Row(props){
     if(!props.arr) return null;
