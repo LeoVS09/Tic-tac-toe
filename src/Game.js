@@ -35,15 +35,8 @@ class Game extends Component {
 
         let paradox = searchParadox(squares);
         if(paradox !== null)
-            if(paradox.isOneSquare){
-                squares[paradox.number] = {
-                    symbol: paradox.equivalent.symbol,
-                    step: paradox.equivalent.step
-                };
-                paradox = null;
-            }else if(paradox.isDefinitely){
-                for(let i = 0; i < paradox.numbers.length; i++)
-                    squares[paradox.numbers[i]] = paradox.variant[i];
+            if(paradox.isDefine) {
+                squares = paradox.squares;
                 paradox = null;
             }
 
@@ -62,13 +55,8 @@ class Game extends Component {
             paradox: paradox
         });
     }
-    choice(confrontation){
+    choice(squares){
         let history = this.clone(this.state.history);
-        let current = history[history.length - 1];
-        let squares = current.squares.slice();
-        let k = 0;
-        for(let i of this.state.paradox.numbers)
-            squares[i] = confrontation[k++];
         history[this.state.stepNumber - 1] = {squares:squares};
         this.setState({
             history: history,
@@ -118,7 +106,7 @@ class Game extends Component {
         return (
             <div className="game">
                 <header className="game_header">
-                    <h1><span className="quant">Quantum</span> tic-tac-toe<sup><small>v0.4.2</small></sup></h1>
+                    <h1><span className="quant">Quantum</span> tic-tac-toe<sup><small>v0.4.7</small></sup></h1>
                     <h2 className="game_status">{status}</h2>
                 </header>
                 <div className="game_board">
@@ -132,7 +120,7 @@ class Game extends Component {
                 {this.state.paradox &&
                     <div className="game_choice">
                         <Choice paradox={this.state.paradox}
-                                onClick={(confrontation) => this.choice(confrontation)}
+                                onClick={(squares) => this.choice(squares)}
                         />
                     </div>
                  }

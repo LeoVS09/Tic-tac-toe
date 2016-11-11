@@ -26,7 +26,7 @@ class Board extends Component {
         }
         let spotlight=false;
         if(this.props.paradox)
-            if(this.props.paradox.numbers[0] === i) spotlight=true;
+            if(this.props.paradox.confrontation.number === i) spotlight=true;
 
         return (
             <Square

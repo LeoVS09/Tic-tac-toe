@@ -8,12 +8,12 @@ class Choice extends Component{
                 <h3>choose</h3>
                 <div className="choice_variants">
                     <div className="variant" 
-                         onClick={() => this.props.onClick(this.props.paradox.confrontations[0])}>
-                        {this.props.paradox.confrontations[0][0].symbol}
+                         onClick={() => this.props.onClick(this.props.paradox.variants[0])}>
+                        {this.props.paradox.confrontation.variants[0].symbol}
                     </div>
                     <div className="variant" 
-                         onClick={() => this.props.onClick(this.props.paradox.confrontations[1])}>
-                        {this.props.paradox.confrontations[1][0].symbol}
+                         onClick={() => this.props.onClick(this.props.paradox.variants[1])}>
+                        {this.props.paradox.confrontation.variants[1].symbol}
                     </div>
                 </div>
             </div>
