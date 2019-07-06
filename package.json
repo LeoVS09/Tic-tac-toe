@@ -1,11 +1,15 @@
 {
   "name": "tic-tac-toe",
-  "version": "1.0.0",
-  "description": "simple react tic tac toe game",
-  "main": "index.js",
+  "version": "0.5.0",
+  "description": "Quantum tic tac toe game",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack-devserver": "webpack-dev-server --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --port 8090 --host 0.0.0.0"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -21,30 +25,32 @@
   "bugs": {
     "url": "https://github.com/LeoVS09/Tic-tac-toe/issues"
   },
-  "homepage": "https://github.com/LeoVS09/Tic-tac-toe#readme",
-  "dependencies": {
-    "autoprefixer-loader": "^3.2.0",
-    "babel-core": "^6.18.0",
-    "babel-loader": "^6.2.7",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-stage-0": "^6.16.0",
-    "babel-preset-stage-1": "^6.16.0",
-    "css-loader": "^0.25.0",
-    "json-loader": "^0.5.4",
-    "postcss-loader": "^1.1.0",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "react-hot-loader": "^3.0.0-beta.6",
-    "style-loader": "^0.13.1"
+  "homepage": "https://leovs09.github.io/Tic-tac-toe/",
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "devDependencies": {
-    "babel-core": "^6.18.0",
-    "babel-loader": "^6.2.7",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-react-hmre": "^1.1.1",
-    "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@types/jest": "24.0.15",
+    "@types/node": "12.0.12",
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.8.4",
+    "node-sass": "^4.12.0",
+    "gh-pages": "^2.0.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
+    "typescript": "3.5.2"
   }
 }
