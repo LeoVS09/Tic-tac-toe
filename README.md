@@ -1,7 +1,7 @@
 # Tic-tac-toe
 Quantum tic-tac-toe game 
 [play online](https://leovs09.github.io/Tic-tac-toe/)
-[regulations](https://www.wikiwand.com/en/Quantum_tic-tac-toe)
+[rules](https://www.wikiwand.com/en/Quantum_tic-tac-toe)
 [правила на русском](https://habrahabr.ru/post/276329/)
 
 ---
