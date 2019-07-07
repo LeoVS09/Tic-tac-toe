@@ -1,6 +1,6 @@
 {
   "name": "tic-tac-toe",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Quantum tic tac toe game",
   "private": true,
   "scripts": {

@@ -7,7 +7,6 @@ export interface Conflict {
 }
 
 export default function unleash(map: GameMap, squareIndexes: Array<number>, define: Array<MapSymbol>){
-    console.log('unleash', map, squareIndexes, define)
     const clonedMap: GameMap = map.map(square => {
         if(!Array.isArray(square))
             return square
@@ -15,6 +14,34 @@ export default function unleash(map: GameMap, squareIndexes: Array<number>, defi
         return cloneSquare(square)
     })
 
+    let conflicts: Array<Conflict> = [];
+    do{
+        conflicts = [];
+        for (const index of squareIndexes) {
+            const square = clonedMap[index]
+
+            if (!Array.isArray(square))
+                continue
+
+            const symbol = findSymbolNotInList(square, define)
+            if(symbol)
+                conflicts.push({
+                    index,
+                    symbol
+                });
+        }
+
+        for (const {index, symbol} of conflicts) {
+            const second = searchSecondSymbol(clonedMap, index, symbol);
+
+            if(second === -1)
+                continue
+
+            squareIndexes.push(second);
+            define.push(symbol);
+        }
+
+    } while (conflicts.length !== 0);
 
     let k = 0;
     for(let i of squareIndexes)
