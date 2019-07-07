@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import {store} from './reducers'
 // Mount point for app
 
 ReactDOM.render(
     // Attach routing to application
     <BrowserRouter>
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </BrowserRouter>,
     // This will find root element and attach application to DOM
     document.getElementById('root')
