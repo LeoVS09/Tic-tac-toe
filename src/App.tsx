@@ -17,10 +17,7 @@ const loadable = (loader: () => Promise<React.ComponentType<any> | { default: Re
 const App: React.FC = () => {
     return (
         <div className="App">
-            <TopBar routes={[
-                {to: routes.home, label: 'Home'},
-                {to: routes.help, label: 'Help'}
-            ]}/>
+            <TopBar />
 
             <Switch>
                 <Route

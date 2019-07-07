@@ -1,14 +1,15 @@
-import counter, {CounterState} from './counter'
+import game from './game'
 import {configureStore} from 'redux-starter-kit'
+import {GameState} from "./game";
 
 export interface AppState {
-    counter: CounterState
+    game: GameState
 }
 
 const reducer = {
-    counter
+    game
 }
 
-export const store = configureStore({
+export const store = configureStore<AppState>({
     reducer
 })

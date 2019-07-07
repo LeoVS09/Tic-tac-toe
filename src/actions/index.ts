@@ -1,5 +1,5 @@
 import {createAction} from 'redux-starter-kit'
 
-export const increment = createAction('counter/increment')
+export const setSymbol = createAction('game/set-symbol')
 
-export const decrement = createAction('counter/decrement')
+export const makeChoice = createAction('game/make-choice')

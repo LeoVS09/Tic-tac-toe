@@ -1,0 +1,41 @@
+@import '../styles/config.scss';
+
+.top-bar {
+  flex: 1;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+  a {
+    text-decoration: none;
+    color: $main-text-color;
+  }
+
+  &__header {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__menu {
+    margin-right: 0;
+    margin-left: auto;
+    position: absolute;
+    right: 1rem;
+    top: 2.5rem;;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &__quant {
+    font-family: 'Permanent Marker', cursive;
+    color: $highlight-text-color;
+  }
+
+  small {
+    font-size: 0.6em;
+    font-style: italic;
+  }
+}

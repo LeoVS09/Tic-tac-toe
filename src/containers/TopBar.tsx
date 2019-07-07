@@ -1,18 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import * as routes from '../routes'
+import './TopBar.scss'
 
-export interface TopBarProps {
-    routes: Array<{to: string, label: string}>
-}
-
-export default function ({routes}: TopBarProps) {
-    return <nav>
-        <ul>
-            {routes.map(({to, label}) => (
-                <li key={to}>
-                    <Link to={to}>{label}</Link>
-                </li>
-            ))}
-        </ul>
-    </nav>
+export default function TopBar () {
+    return (
+        <header className='top-bar'>
+            <Link to={routes.home} className='top-bar__header'>
+                <h1><span className="top-bar__quant">Quantum</span> tic-tac-toe<sup><small>v0.5.1</small></sup></h1>
+            </Link>
+            <div className='top-bar__menu'>
+                <Link to={routes.help} >
+                    <span>Rules</span>
+                </Link>
+            </div>
+        </header>
+    )
 }

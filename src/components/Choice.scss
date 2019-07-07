@@ -1,0 +1,40 @@
+@import '../styles/config.scss';
+
+.choice {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-color: $highlight-background-color;
+  box-shadow: inset 0px 0px 9px 1px rgba(204,204,204,1);
+  padding: 1em 0;
+
+  &__header {
+    flex: 1;
+    margin: 0 auto;
+    font-family: "Roboto", "Century Gothic", Futura, sans-serif;
+    font-size: 2em;
+    color: #999999;
+  }
+
+  &__variants {
+    margin: 1em 0;
+    flex: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__variant {
+    cursor: pointer;
+    margin: auto;
+    font-size: 7em;
+    text-align: center;
+    width: 1.5em;
+    height: 1.5em;
+    font-family: 'Permanent Marker', cursive;
+    background-color: #FAFAFA;
+    box-shadow: 0px 0px 9px 1px rgba(204,204,204,1);
+    color: $secondary-text-color;
+  }
+}
