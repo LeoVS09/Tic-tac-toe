@@ -1,6 +1,6 @@
 import React from 'react';
 import Loadable from 'react-loadable';
-import { Switch, Route } from "react-router-dom";
+import {Switch, Route} from "react-router-dom";
 import './App.scss';
 import * as routes from './routes'
 import TopBar from './containers/TopBar'

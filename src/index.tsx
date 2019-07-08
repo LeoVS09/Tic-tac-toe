@@ -8,9 +8,13 @@ import * as serviceWorker from './serviceWorker';
 import {store} from './reducers'
 // Mount point for app
 
+let basename = ''
+if(process.env.NODE_ENV === 'production')
+    basename = 'Tic-tac-toe/'
+
 ReactDOM.render(
     // Attach routing to application
-    <BrowserRouter>
+    <BrowserRouter basename={basename} >
         <Provider store={store}>
             <App />
         </Provider>
